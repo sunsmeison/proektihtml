@@ -1,0 +1,25 @@
+.gallery-container {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 15px;
+    padding: 20px;
+    background: #0d0d0d;
+
+    .image {
+        @include center;
+        background: $secondary-color;
+        padding: 10px;
+        border-radius: 10px;
+
+        img {
+            width: 100%;
+            border-radius: 10px;
+            transition: 0.3s;
+
+            &:hover {
+                transform: scale(1.05);
+                box-shadow: 0 0 10px $primary-color;
+            }
+        }
+    }
+}

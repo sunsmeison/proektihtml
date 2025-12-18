@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="ka">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Viktor Tsoi</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    body {
+      margin: 0;
+      background: #0b1630;
+      color: #facc15; /* yellow text */
+      font-family: sans-serif;
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+    }
+
+    main {
+      flex: 1;
+      padding: 20px;
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    h1 {
+      color: #a855f7; /* purple heading */
+    }
+
+    p {
+      color: #e6e6e6;
+      line-height: 1.5;
+    }
+
+    video {
+      display: block;
+      margin: 20px 0;
+      max-width: 100%;
+      border-radius: 10px;
+    }
+
+    /* Bottom menu */
+    .menu {
+      display: flex;
+      justify-content: center;
+      gap: 25px;
+      background: rgba(255,255,255,0.1);
+      padding: 12px 24px;
+      border-radius: 12px 12px 0 0;
+      position: fixed;
+      bottom: 0;
+      width: 100%;
+      backdrop-filter: blur(6px);
+    }
+
+    .item {
+      text-align: center;
+      color: #9fb4d6;
+      transition: 0.2s;
+      cursor: pointer;
+    }
+
+    .item i {
+      display: block;
+      font-size: 22px;
+      margin-bottom: 5px;
+    }
+
+    .item:hover {
+      color: #a855f7; /* purple on hover */
+    }
+
+    .active {
+      color: #facc15; /* yellow active */
+    }
+
+    @media (max-width: 480px) {
+      .item i {
+        font-size: 18px;
+      }
+      .menu {
+        gap: 15px;
+        padding: 10px 15px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <h1>I like Viktor Tsoi</h1>
+    <p>Viktor Robertovich Tsoi (Russian: Виктор Робертович Цой; 21 June 1962 – 15 August 1990) was a Soviet singer-songwriter and actor who co-founded Kino, one of the most popular and influential bands in the history of Russian music.</p>
+
+    <video controls>
+      <source src="movie.mp4" type="video/mp4">
+      Your browser does not support the video tag.
+    </video>
+  </main>
+
+  <div class="menu">
+    <div class="item active">
+      <i class="fa-solid fa-house"></i>
+      Home
+    </div>
+    <div class="item">
+      <i class="fa-solid fa-video"></i>
+      Video
+    </div>
+    <div class="item">
+      <i class="fa-solid fa-circle-info"></i>
+      Info
+    </div>
+  </div>
+</body>
+</html>

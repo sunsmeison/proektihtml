@@ -1,0 +1,145 @@
+body {
+  font-family: "Sylfaen", "Noto Sans Georgian", sans-serif;
+  margin: 0;
+  padding: 40px 0 0 60px;
+  background-color: #fff;
+}
+
+h1 {
+  font-size: 50px;
+  margin: 0;
+  color: #333;
+}
+
+p {
+  font-size: 16px;
+  color: #555;
+  border-bottom: 2px solid rgba(0, 0, 0, 0.2);
+  padding-bottom: 1px;
+  width: 120px;
+}
+
+.input-row {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 10px;
+}
+
+.short-input {
+  width: 150px;
+  padding: 5px;
+  font-size: 14px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.long-input {
+  width: 325px;
+  padding: 5px;
+  font-size: 14px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  display: block;
+  margin-bottom: 10px;
+}
+
+.birthdate-section {
+  margin-top: 15px;
+}
+
+.birthdate-section small {
+  display: block;
+  color: #555;
+  margin-bottom: 5px;
+  font-size: 12px;
+}
+
+.dropdown-row {
+  display: flex;
+  gap: 10px;
+}
+
+.dropdown {
+  padding: 5px;
+  font-size: 14px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.gender-section {
+  margin-top: 15px;
+}
+
+.gender-section small {
+  display: block;
+  color: #555;
+  margin-bottom: 5px;
+  font-size: 12px;
+}
+
+.gender-options {
+  display: flex;
+  gap: 15px;
+}
+
+.gender-label {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  font-size: 14px;
+  position: relative;
+}
+
+.gender-label input {
+  display: none;
+}
+
+.circle {
+  width: 16px;
+  height: 16px;
+  border: 2px solid #007BFF;
+  border-radius: 50%;
+  margin-right: 8px;
+  background-color: #fff;
+  transition: all 0.2s;
+  box-shadow: 0 0 0 rgba(0,0,0,0);
+}
+
+.gender-label input:checked + .circle {
+  background-color: #007BFF;
+  box-shadow: 0 0 8px #007BFF;
+}
+
+.terms {
+  font-size: 12px;
+  color: #555;
+  margin-top: 15px;
+}
+
+.terms a {
+  color: #007BFF;
+  text-decoration: none;
+}
+
+.terms a:hover {
+  text-decoration: underline;
+}
+
+.register-btn {
+  display: block;
+  width: 100%;
+  max-width: 320px;
+  padding: 12px;
+  margin-top: 10px;
+  background-color: #28a745;
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.register-btn:hover {
+  background-color: #218838;
+}

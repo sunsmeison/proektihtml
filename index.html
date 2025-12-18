@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>GuitarZone | Premium Instruments</title>
+    <style>
+        /* --- GLOBAL RESET --- */
+        * { margin: 0; padding: 0; box-sizing: border-box; scroll-behavior: smooth; }
+        body { font-family: 'Segoe UI', Arial, sans-serif; background: #f8f9fa; color: #333; overflow-x: hidden; }
+
+        /* --- PURE CSS NOTIFICATION --- */
+        .cart-msg {
+            position: fixed; top: -100px; left: 50%; transform: translateX(-50%);
+            background: #28a745; color: white; padding: 15px 40px; border-radius: 50px;
+            font-weight: bold; box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            z-index: 9999; opacity: 0; pointer-events: none;
+        }
+        .buy-btn:active + .cart-msg { animation: popup 2s ease-in-out; }
+
+        @keyframes popup {
+            0% { opacity: 0; top: -50px; }
+            20% { opacity: 1; top: 30px; }
+            80% { opacity: 1; top: 30px; }
+            100% { opacity: 0; top: 30px; }
+        }
+
+        /* --- BURGER BAR --- */
+        #menu-toggle { display: none; }
+        .burger {
+            display: none; cursor: pointer; position: fixed;
+            top: 20px; right: 20px; z-index: 2001;
+            background: #0a84ff; padding: 10px; border-radius: 8px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+        }
+        .burger span { display: block; width: 25px; height: 3px; background: white; margin: 5px 0; transition: 0.4s; }
+
+        /* --- MAIN NAVIGATION --- */
+        nav {
+            position: sticky; top: 0; background: rgba(0,0,0,0.95);
+            padding: 15px 0; text-align: center; z-index: 1000; backdrop-filter: blur(10px);
+        }
+        nav a {
+            margin: 0 12px; color: white; text-decoration: none; font-weight: bold;
+            padding: 10px 18px; border-radius: 8px; transition: 0.3s ease; display: inline-block;
+        }
+        .normal-btn:hover { background: #333; color: #0a84ff; }
+
+        .login-btn { 
+            background: #0a84ff; color: white !important; 
+            transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275); 
+            border: 2px solid transparent;
+        }
+        .login-btn:hover { 
+            background: #0070da; transform: scale(1.1); 
+            box-shadow: 0 0 20px rgba(10, 132, 255, 0.5); border-color: rgba(255,255,255,0.8);
+        }
+
+        /* --- HERO --- */
+        .hero-header {
+            background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), 
+                        url('https://images.unsplash.com/photo-1511379938547-c1f69419868d?auto=format&fit=crop&w=1600&q=80') center/cover no-repeat;
+            height: 45vh; display: flex; flex-direction: column; justify-content: center; align-items: center; color: white; text-align: center;
+        }
+        .hero-header h1 { font-size: 3.5rem; text-shadow: 2px 2px 10px rgba(0,0,0,0.5); }
+
+        /* --- CATEGORY BUTTONS --- */
+        .section-title-cat { font-size: 2rem; font-weight: bold; text-align: center; padding: 40px 0 20px; }
+        .category-nav { display: flex; justify-content: center; gap: 20px; flex-wrap: wrap; padding-bottom: 40px; }
+        .cat-card {
+            background: #000; color: white; padding: 15px 30px;
+            text-decoration: none; border-radius: 8px; font-weight: bold;
+            transition: 0.3s ease; min-width: 160px; text-align: center;
+        }
+        .cat-card:hover { background: #0a84ff; transform: translateY(-3px); }
+
+        /* --- PRODUCT GRID --- */
+        .main-container { padding: 40px 5%; text-align: center; max-width: 1200px; margin: auto; }
+        .main-container h2 { font-size: 2.2rem; margin-bottom: 40px; border-bottom: 3px solid #0a84ff; display: inline-block; padding-bottom: 10px; }
+        .products { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 30px; margin-bottom: 50px; }
+        
+        .card { 
+            background: white; border-radius: 20px; padding: 25px; 
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05); transition: 0.3s; 
+            border: 1px solid #eee; display: flex; flex-direction: column;
+        }
+        .card:hover { transform: translateY(-10px); }
+        .card img { width: 100%; height: 250px; object-fit: contain; margin-bottom: 20px; }
+        .card p { color: #0a84ff; font-weight: bold; font-size: 1.4rem; margin-bottom: 15px; }
+
+        .buy-btn {
+            background: #000; color: white; border: none; padding: 12px 25px; 
+            border-radius: 10px; font-weight: bold; cursor: pointer; transition: 0.3s ease; margin-top: auto;
+        }
+        .buy-btn:hover { background: #0a84ff; }
+
+        /* --- FOOTER --- */
+        footer {
+            background: #000; color: white; padding: 80px 10%; position: relative;
+            overflow: hidden; display: flex; justify-content: space-between; flex-wrap: wrap; gap: 40px; margin-top: 80px;
+        }
+        .footer-box { flex: 1; min-width: 250px; z-index: 2; }
+        .footer-bg-img {
+            position: absolute; top: 50%; left: 50%; width: 700px; height: 700px;
+            background: url('guitar.png') no-repeat center/contain;
+            transform: translate(-50%, -50%) rotate(90deg); opacity: 0.12; z-index: 1; pointer-events: none;
+        }
+
+        /* --- MOBILE --- */
+        @media (max-width: 800px) {
+            .burger { display: block; }
+            nav {
+                position: fixed; top: 0; right: -100%; width: 75%; height: 100vh;
+                background: rgba(0,0,0,0.98); flex-direction: column; justify-content: center;
+                transition: 0.5s; display: flex;
+            }
+            nav a { margin: 15px 0; font-size: 1.5rem; }
+            #menu-toggle:checked ~ nav { right: 0; }
+            #menu-toggle:checked + .burger span:nth-child(1) { transform: rotate(-45deg) translate(-5px, 6px); }
+            #menu-toggle:checked + .burger span:nth-child(2) { opacity: 0; }
+            #menu-toggle:checked + .burger span:nth-child(3) { transform: rotate(45deg) translate(-5px, -6px); }
+        }
+    </style>
+</head>
+<body>
+
+    <input type="checkbox" id="menu-toggle" />
+    <label class="burger" for="menu-toggle"><span></span><span></span><span></span></label>
+
+    <header class="hero-header" id="home">
+        <h1>GuitarZone</h1>
+        <p>Your Ultimate Guitar Shop</p>
+    </header>
+
+    <nav>
+        <a href="#home" class="normal-btn">Home</a>
+        <a href="#guitars" class="normal-btn">Guitars</a>
+        <a href="#accessories" class="normal-btn">Accessories</a>
+        <a href="#info" class="normal-btn">Info</a>
+        <a href="login.html" class="login-btn">Login</a>
+    </nav>
+
+    <div class="section-title-cat">Find Your Perfect Guitar</div>
+    <section class="category-nav">
+        <a href="acoustic.html" class="cat-card">Acoustic Guitar</a>
+        <a href="electric.html" class="cat-card">Electric Guitar</a>
+        <a href="bass.html" class="cat-card">Bass Guitar</a>
+    </section>
+
+    <main class="main-container">
+        <h2 id="guitars">Popular Models</h2>
+        <div class="products">
+            <div class="card"><img src="acu1.png"><h3>Premium Acoustic</h3><p>$899</p><button class="buy-btn">Buy Now</button><div class="cart-msg">🛒 Added to Cart!</div></div>
+            <div class="card"><img src="bass1.png"><h3>Pro Bass Series</h3><p>$1,199</p><button class="buy-btn">Buy Now</button><div class="cart-msg">🛒 Added to Cart!</div></div>
+            <div class="card"><img src="elec4.png"><h3>Electric Shredder</h3><p>$749</p><button class="buy-btn">Buy Now</button><div class="cart-msg">🛒 Added to Cart!</div></div>
+        </div>
+
+        <h2 id="accessories">Essential Accessories</h2>
+        <div class="products">
+            <div class="card"><img src="download (18).jpg"><h3>Pro Capo</h3><p>$20</p><button class="buy-btn">Buy Now</button><div class="cart-msg">🛒 Added to Cart!</div></div>
+            <div class="card"><img src="download (19).jpg"><h3>Mixed Pick Pack</h3><p>$1</p><button class="buy-btn">Buy Now</button><div class="cart-msg">🛒 Added to Cart!</div></div>
+            <div class="card"><img src="download (20).jpg"><h3>Leather Strap</h3><p>$20</p><button class="buy-btn">Buy Now</button><div class="cart-msg">🛒 Added to Cart!</div></div>
+        </div>
+    </main>
+
+    
+    <footer id="info">
+        <div class="footer-box">
+            <h2 style="font-size: 2.5rem; margin-bottom: 10px;">GuitarZone</h2>
+            <p style="opacity: 0.7; line-height: 1.6;">
+                The #1 shop for premium guitars. We offer global shipping, expert setups, and a lifetime warranty on all instruments.
+            </p>
+        </div>
+        <div class="footer-box" style="text-align: right;">
+            <h3 style="color: #0a84ff; margin-bottom: 15px;">Contact Us</h3>
+            <p> 123-456-78</p>
+            <p> Music City, Guitar St.</p>
+            <p> support@guitarzone.com</p>
+        </div>
+        <div class="footer-bg-img"></div>
+    </footer>
+
+</body>
+</html>
